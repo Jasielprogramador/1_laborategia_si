@@ -2,6 +2,7 @@
 package lana;
 
 import java.util.ArrayList;
+
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.DoubleSummaryStatistics;
@@ -9,6 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.*;
 import static java.util.Comparator.*;
 import static java.util.stream.Collectors.*;
@@ -46,40 +48,42 @@ public class SoftwareIngenieritza {
 	}
 	
 	public List<Ikasle> gainditutakoakLortu(){
-		this.matrikulatuZerr.stream().filter(ikasle -> ikasle.notaFinalaKalkulatu()>=5).collect(arg0)
+		return this.matrikulatuZerr.stream().filter(ikasle -> ikasle.notaFinalaKalkulatu()>=5).collect(Collectors.toList());	//con Collectors.toList() le conviertes la lista
+																																//filtrada en List<Ikasle>
+		
 	}
 
 	public List<Ikasle> gainditutakoakIzenezOrdenatutaLortu(){
-		//TODO  7. ariketa
+		return this.gainditutakoakLortu().stream().sorted(Comparator.comparing(Ikasle::getIzen)).collect(Collectors.toList());
 	}
 
 	public List<Ikasle> gainditutakoakIzenezAbizenezOrdenatutaLortu(){
-		//TODO  8. ariketa
+		return this.gainditutakoakLortu().stream().sorted(Comparator.comparing(Ikasle::getIzen).thenComparing(Ikasle::getAbizen)).collect(Collectors.toList());
 	}
 	
 	public double gaindituenPortzentaiaLortu(){
-		//TODO  9. ariketa
+		return this.gainditutakoakLortu().stream().count();
 	}
 
 	public List<String> herrialdeakLortu(){
-		//TODO  10. ariketa
+		return this.matrikulatuZerr.stream().distinct().map(Ikasle::getHerrialde).collect(Collectors.toList());
 	}
 	
 
 	public List<Ikasle> entregagarriGuztiakGainditutakoakLortu(){
-		//TODO  11. ariketa	
+		return this.matrikulatuZerr.stream().filter(ikasle -> ikasle.entregagarriGuztiakGaindituDitu()).collect(Collectors.toList());
 	}
 	
 	public List<Ikasle> entregagarrianNotaGainditzenDutenIkasleakLortu(double pNota){
-		//TODO  12. ariketa
+		return this.matrikulatuZerr.stream().filter(ikasle -> ikasle.entregagarrietakoBatekNotaGaindituDu(pNota)).collect(Collectors.toList());
 	}
 
 	public void ikasleenEstatiskikakInprimatu() {
-		//TODO  13. ariketa
+		System.out.println(this.matrikulatuZerr.stream().collect(Collectors.summarizingDouble(Ikasle::notaFinalaKalkulatu)));
 	}
 	
 	public Map<Boolean,List<Ikasle>> gaindituakSuspendituakLortu(){
-		//TODO  14. ariketa
+		return this.matrikulatuZerr.stream().collect(Collectors.partitioningBy())
 	}
 	
 	public Map<String,List<Ikasle>> ikasleakHerrialdekaLortu(){
