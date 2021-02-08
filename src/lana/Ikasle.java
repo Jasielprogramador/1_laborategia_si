@@ -51,13 +51,7 @@ public class Ikasle {
 	}
 	 
 	public double entregagarrienNotaKalkulatu(){
-		
-		double emaitza = 0.0;
-		
-		if(!this.entregagarriZerr.stream().mapToDouble(Entregagarri -> Entregagarri.getNota()).average().isEmpty()) {
-			emaitza = this.entregagarriZerr.stream().mapToDouble(Entregagarri -> Entregagarri.getNota()).sum();
-		}
-		return emaitza;
+		return this.entregagarriZerr.stream().mapToDouble(Entregagarri -> Entregagarri.getNota()).average().orElse());
 	}
 	
 	public double notaFinalaKalkulatu(){
