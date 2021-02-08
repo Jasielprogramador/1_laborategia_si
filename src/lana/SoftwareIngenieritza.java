@@ -83,19 +83,21 @@ public class SoftwareIngenieritza {
 	}
 	
 	public Map<Boolean,List<Ikasle>> gaindituakSuspendituakLortu(){
-		return this.matrikulatuZerr.stream().collect(Collectors.partitioningBy())
+		return this.matrikulatuZerr.stream().collect(Collectors.partitioningBy(s -> s.notaFinalaKalkulatu() > 5));
 	}
 	
 	public Map<String,List<Ikasle>> ikasleakHerrialdekaLortu(){
-		//TODO  15. ariketa
+		return this.matrikulatuZerr.stream().collect(Collectors.groupingBy(s -> s.getHerrialde()));
 	}
 
 	public Map<String,Double> batazbestekoNotakHerrialdekaLortu(){
-		//TODO  16. ariketa
+		return this.matrikulatuZerr.stream().collect(Collectors.groupingBy(s -> s.getHerrialde(),
+				Collectors.averagingDouble(s -> s.notaFinalaKalkulatu())));
 	}
 
 	public Map<String,Ikasle> notaMaximodunIkasleaHerrialdekaLortu(){
-		//TODO  17. ariketa
+		return this.matrikulatuZerr.stream().collect(Collectors.groupingBy(s -> s.getHerrialde(),
+				Collectors.collectingAndThen(Collectors.maxBy(s -> s.notaFinalaKalkulatu()),)
 	}
 	
 	//14 ariketa
