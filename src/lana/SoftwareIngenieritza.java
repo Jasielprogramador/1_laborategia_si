@@ -96,13 +96,19 @@ public class SoftwareIngenieritza {
 	}
 
 	public Map<String,Ikasle> notaMaximodunIkasleaHerrialdekaLortu(){
-		return this.matrikulatuZerr.stream().collect(Collectors.groupingBy(s -> s.getHerrialde(),
-				Collectors.collectingAndThen(Collectors.maxBy(s -> s.notaFinalaKalkulatu()),)
+		
+		return this.matrikulatuZerr.stream()
+				.collect(Collectors.groupingBy(
+						s -> s.getHerrialde(),
+						Collectors.collectingAndThen(
+										Collectors.maxBy(Ikasle::notaFinalaKalkulatu), 
+										Optional::get)));
+		
 	}
 	
-	//14 ariketa
 	public Map<String,Double> notaMaximoaHerrialdekaLortu(){
-		//TODO  18. ariketa			
+		return this.matrikulatuZerr.stream().collect(Collectors.groupingBy(s -> s.getHerrialde(),
+				Collectors.collectingAndThen(Collectors.maxBy(Ikasle::notaFinalaKalkulatu), ));
 	}
 
 }

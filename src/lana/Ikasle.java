@@ -51,7 +51,8 @@ public class Ikasle {
 	}
 	 
 	public double entregagarrienNotaKalkulatu(){
-		return this.entregagarriZerr.stream().mapToDouble(Entregagarri -> Entregagarri.getNota()).average().orElse());
+		return this.entregagarriZerr.stream().mapToDouble(
+				Entregagarri::getNota).average().orElse(0.0);
 	}
 	
 	public double notaFinalaKalkulatu(){
