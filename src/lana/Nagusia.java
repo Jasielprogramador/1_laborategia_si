@@ -131,6 +131,12 @@ public class Nagusia {
 		
 		/**********TODO***********/
 		
+		/*******TODO********
+		//Zerrenda normala dugunean
+		nZ.forEach(System.out::println)
+		//MAP dugunean
+		mapZ.forEach((key,value) -> System.out.printf("key: %s, value: %f\n", key, value));
+		*******************/
 		
 	}
 
