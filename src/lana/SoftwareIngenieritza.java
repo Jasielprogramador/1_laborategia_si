@@ -43,30 +43,34 @@ public class SoftwareIngenieritza {
 	////////////////////////////JAVA8////////////////////////////////
 	
 	
+	//Quintano lo tiene distinto
 	public void notaTotalakErakutsi(){
 		this.matrikulatuZerr.stream().mapToDouble(Ikasle -> Ikasle.notaFinalaKalkulatu()).forEach(a -> System.out.println(a));
 	}
 	
 	public List<Ikasle> gainditutakoakLortu(){
-		return this.matrikulatuZerr.stream().filter(ikasle -> ikasle.notaFinalaKalkulatu()>=5).collect(Collectors.toList());	//con Collectors.toList() le conviertes la lista
+		return this.matrikulatuZerr.stream().filter(ikasle -> ikasle.notaFinalaKalkulatu()>=5.0).collect(Collectors.toList());	//con Collectors.toList() le conviertes la lista
 																																//filtrada en List<Ikasle>
 		
 	}
 
 	public List<Ikasle> gainditutakoakIzenezOrdenatutaLortu(){
-		return this.gainditutakoakLortu().stream().sorted(Comparator.comparing(Ikasle::getIzen)).collect(Collectors.toList());
+		return this.gainditutakoakLortu().stream().filter(elem->elem.notaFinalaKalkulatu()>=5.0)
+				.sorted(Comparator.comparing(Ikasle::getIzen)).collect(Collectors.toList());
 	}
 
 	public List<Ikasle> gainditutakoakIzenezAbizenezOrdenatutaLortu(){
-		return this.gainditutakoakLortu().stream().sorted(Comparator.comparing(Ikasle::getIzen).thenComparing(Ikasle::getAbizen)).collect(Collectors.toList());
+		return this.gainditutakoakLortu().stream().filter(elem->elem.notaFinalaKalkulatu()>=5.0).
+				sorted(Comparator.comparing(Ikasle::getIzen).thenComparing(Ikasle::getAbizen)).collect(Collectors.toList());
 	}
 	
 	public double gaindituenPortzentaiaLortu(){
-		return this.gainditutakoakLortu().stream().count();
+		return this.gainditutakoakLortu().stream().count()/matrikulatuZerr.size()*100;
 	}
 
 	public List<String> herrialdeakLortu(){
-		return this.matrikulatuZerr.stream().distinct().map(Ikasle::getHerrialde).collect(Collectors.toList());
+		return this.matrikulatuZerr.stream().distinct().map(Ikasle::getHerrialde).
+				collect(Collectors.toList());
 	}
 	
 
@@ -79,11 +83,16 @@ public class SoftwareIngenieritza {
 	}
 
 	public void ikasleenEstatiskikakInprimatu() {
-		System.out.println(this.matrikulatuZerr.stream().collect(Collectors.summarizingDouble(Ikasle::notaFinalaKalkulatu)));
+		var d = this.matrikulatuZerr.stream().
+		collect(Collectors.summarizingDouble(Ikasle::notaFinalaKalkulatu));
+		
+		System.out.println("{\"max\":"+d.getMax()+
+				",\"min\":"+d.getMin()+
+				",\"average\":"+d.getAverage()+"}");
 	}
 	
 	public Map<Boolean,List<Ikasle>> gaindituakSuspendituakLortu(){
-		return this.matrikulatuZerr.stream().collect(Collectors.partitioningBy(s -> s.notaFinalaKalkulatu() > 5));
+		return this.matrikulatuZerr.stream().collect(Collectors.partitioningBy(s -> s.gaindituDu()));
 	}
 	
 	public Map<String,List<Ikasle>> ikasleakHerrialdekaLortu(){
@@ -101,14 +110,18 @@ public class SoftwareIngenieritza {
 				.collect(Collectors.groupingBy(
 						s -> s.getHerrialde(),
 						Collectors.collectingAndThen(
-										Collectors.maxBy(Ikasle::notaFinalaKalkulatu), 
+										Collectors.maxBy(Comparator.comparing(Ikasle::notaFinalaKalkulatu)),
 										Optional::get)));
 		
 	}
 	
 	public Map<String,Double> notaMaximoaHerrialdekaLortu(){
-		return this.matrikulatuZerr.stream().collect(Collectors.groupingBy(s -> s.getHerrialde(),
-				Collectors.collectingAndThen(Collectors.maxBy(Ikasle::notaFinalaKalkulatu), ));
+		return this.matrikulatuZerr.stream()
+				.collect(Collectors.groupingBy(
+						s -> s.getHerrialde(),
+						Collectors.collectingAndThen(
+										Collectors.maxBy(Comparator.comparing(Ikasle::notaFinalaKalkulatu)),
+										g -> g.get().notaFinalaKalkulatu())));
 	}
 
 }

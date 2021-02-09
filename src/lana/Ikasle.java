@@ -60,7 +60,7 @@ public class Ikasle {
 	}
 	
 	public boolean entregagarriGuztiakGaindituDitu(){
-		return this.entregagarriZerr.stream().allMatch(Entregagarri -> Entregagarri.getNota()>=5);
+		return this.entregagarriZerr.stream().allMatch(Entregagarri -> Entregagarri.getNota()>=5.0);
 	}
 	
 	
