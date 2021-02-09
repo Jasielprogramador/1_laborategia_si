@@ -4,6 +4,7 @@ package lana;
 import java.util.List;
 import java.util.Map;
 
+
 public class Nagusia {
 
 	public static void main(String[] args) {
@@ -25,6 +26,7 @@ public class Nagusia {
 		a1.addEntregagarri(e11);
 		a1.addEntregagarri(e12);
 		a1.addEntregagarri(e13);
+		
 		/////////// 2. ikaslea	
 		Entregagarri e21 = new Entregagarri("Entregagarri1");
 		e21.setUrl("Erantzuna 1");
@@ -129,7 +131,6 @@ public class Nagusia {
 
 		////////////JAVA8///////////
 		
-		/**********TODO***********/
 		
 		/*******TODO********
 		//Zerrenda normala dugunean
@@ -138,6 +139,106 @@ public class Nagusia {
 		mapZ.forEach((key,value) -> System.out.printf("key: %s, value: %f\n", key, value));
 		*******************/
 		
+		
+		/**************************************************************************************
+		 * IKASLEA
+		 **************************************************************************************/
+		
+		System.out.println("IKASLEA1");
+		System.out.println("Ikasle klasearen gaindituDu() metodoa");
+		System.out.println("false -------"+a1.gaindituDu());
+		
+		System.out.println("Ikasle klasearen entregagarrienNotaKalkulatu() metodoa");
+		System.out.println("5.6 ---------"+a1.entregagarrienNotaKalkulatu());
+		
+		System.out.println("Ikasle klasearen notaFinalaKalkulatu() metodoa");
+		System.out.println("3.74 --------"+a1.notaFinalaKalkulatu());
+		
+		System.out.println("Ikasle klasearen entregagarriGuztiakGaindituDitu() metodoa");
+		System.out.println("false -------"+a1.entregagarriGuztiakGaindituDitu());
+		
+		System.out.println("Ikasle klasearen entregagarrietakoBatekNotaGaindituDu(4.0) metodoa");
+		System.out.println("true -------"+a1.entregagarrietakoBatekNotaGaindituDu(4.0));
+		System.out.println("\n");
+		
+		
+		System.out.println("IKASLEA2");
+		System.out.println("Ikasle klasearen gaindituDu() metodoa");
+		System.out.println("false -------"+a2.gaindituDu());
+		
+		System.out.println("Ikasle klasearen entregagarrienNotaKalkulatu() metodoa");
+		System.out.println("6.966666666666666---------"+a2.entregagarrienNotaKalkulatu());
+		
+		System.out.println("Ikasle klasearen notaFinalaKalkulatu() metodoa");
+		System.out.println("6.086666666666666 --------"+a2.notaFinalaKalkulatu());
+		
+		System.out.println("Ikasle klasearen entregagarriGuztiakGaindituDitu() metodoa");
+		System.out.println("true -------"+a2.entregagarriGuztiakGaindituDitu());
+		
+		System.out.println("Ikasle klasearen entregagarrietakoBatekNotaGaindituDu(4.0) metodoa");
+		System.out.println("true -------"+a2.entregagarrietakoBatekNotaGaindituDu(4.0));
+		System.out.println("\n");
+		
+		
+		
+		System.out.println("IKASLEA3");
+		System.out.println("Ikasle klasearen gaindituDu() metodoa");
+		System.out.println("false -------"+a3.gaindituDu());
+		
+		System.out.println("Ikasle klasearen entregagarrienNotaKalkulatu() metodoa");
+		System.out.println("4.966666666666666 ---------"+a3.entregagarrienNotaKalkulatu());
+		
+		System.out.println("Ikasle klasearen notaFinalaKalkulatu() metodoa");
+		System.out.println("4.086666666666666 --------"+a3.notaFinalaKalkulatu());
+		
+		System.out.println("Ikasle klasearen entregagarriGuztiakGaindituDitu() metodoa");
+		System.out.println("false -------"+a3.entregagarriGuztiakGaindituDitu());
+		
+		System.out.println("Ikasle klasearen entregagarrietakoBatekNotaGaindituDu(4.0) metodoa");
+		System.out.println("true -------"+a3.entregagarrietakoBatekNotaGaindituDu(4.0));
+		System.out.println("\n");
+		
+		
+		
+		/**************************************************************************************
+		 * SOFTWARE INGENIERITZA
+		 **************************************************************************************/
+		
+		System.out.println("SoftwareIngeniaritza klasearen notaTotalakErakutsi() metodoa");
+		System.out.println("3.74\n"
+				+ "6.086666666666666\n"
+				+ "4.086666666666666\n"
+				+ "6.886666666666667\n"
+				+ "6.466666666666667\n"
+				+ "4.206666666666667");
+		System.out.println("--------------------");
+		nSI.notaTotalakErakutsi();
+		
+		
+		System.out.println("SoftwareIngeniaritza klasearen gainditutakoakIzenezOrdenatutaLortu() metodoa");
+		System.out.println("Izen-abizenak: Angel Alonso, eposta: angel@ehu.eus\n"
+				+ "Izen-abizenak: Maria Vaquero, eposta: maria@ehu.eus\n"
+				+ "Izen-abizenak: Pedro Aragon, eposta: pedro@ehu.eus");
+		System.out.println("------------------------------------------------------------------------------");
+		for(Ikasle i:nSI.gainditutakoakIzenezOrdenatutaLortu()) {
+			System.out.println(i);
+		}
+		
+		System.out.println("SoftwareIngeniaritza klasearen gainditutakoakIzenezAbizenezOrdenatutaLortu() metodoa");
+		System.out.println("Izen-abizenak: Angel Alonso, eposta: angel@ehu.eus\n"
+				+ "Izen-abizenak: Maria Vaquero, eposta: maria@ehu.eus\n"
+				+ "Izen-abizenak: Pedro Aragon, eposta: pedro@ehu.eus");
+		System.out.println("------------------------------------------------------------------------------");
+		for(Ikasle i:nSI.gainditutakoakIzenezAbizenezOrdenatutaLortu()) {
+			System.out.println(i);
+		}
+		
+		
+		//TODO
+		System.out.println("SoftwareIngeniaritza klasearen gaindituenPorzentaiaLortu() metodoa");
+		System.out.println(nSI.gaindituenPortzentaiaLortu());
+		
+		System.out.println("SoftwareIngeniaritza klasearen gaindituenPorzentaiaLortu() metodoa");
 	}
 
 }
