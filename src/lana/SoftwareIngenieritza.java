@@ -63,9 +63,9 @@ public class SoftwareIngenieritza {
 		return this.gainditutakoakLortu().stream().filter(elem->elem.notaFinalaKalkulatu()>=5.0).
 				sorted(Comparator.comparing(Ikasle::getIzen).thenComparing(Ikasle::getAbizen)).collect(Collectors.toList());
 	}
-	
+	long a = this.gainditutakoakLortu().stream().count();
 	public double gaindituenPortzentaiaLortu(){
-		return this.gainditutakoakLortu().stream().count()/matrikulatuZerr.size()*100;
+		return ((double)this.gainditutakoakLortu().stream().count()/matrikulatuZerr.size())*100;
 	}
 
 	public List<String> herrialdeakLortu(){
