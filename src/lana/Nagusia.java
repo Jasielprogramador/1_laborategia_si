@@ -262,9 +262,55 @@ public class Nagusia {
 		nSI.ikasleenEstatiskikakInprimatu();
 		
 		System.out.println("SoftwareIngeniaritza klasearen gaindituakSuspendituakLortu() metodoa");
+		System.out.println("Nota: suspentso\n"
+				+ "Lista: Izen-abizenak: Markel Alberdi, eposta: markel@ehu.eus\n"
+				+ "Lista: Izen-abizenak: Garazi Bikandi, eposta: garazi@ehu.eus\n"
+				+ "Lista: Izen-abizenak: Irati Alberdi, eposta: irati@ehu.eus\n"
+				+ "Nota: aprobatua\n"
+				+ "Lista: Izen-abizenak: Maria Vaquero, eposta: maria@ehu.eus\n"
+				+ "Lista: Izen-abizenak: Pedro Aragon, eposta: pedro@ehu.eus\n"
+				+ "Lista: Izen-abizenak: Angel Alonso, eposta: angel@ehu.eus");
+		System.out.println("------------------------------------------------------------------------------");
+		
 		for(boolean i:nSI.gaindituakSuspendituakLortu().keySet()) {
-			System.out.println(i+nSI.gaindituakSuspendituakLortu().get(i));
+			if(i==false)
+				System.out.println("Nota: suspentso");
+			else {
+				System.out.println("Nota: aprobatua");
+			}
+			
+			for(int j=0;j<nSI.gaindituakSuspendituakLortu().get(i).size();j++) {
+				System.out.println("Lista: "+nSI.gaindituakSuspendituakLortu().get(i).get(j));
+			}
 		}
+		
+		System.out.println("SoftwareIngeniaritza klasearen ikasleakHerrialdekaLortu() metodoa");
+		System.out.println("Espainia: Garazi Bikandi,Maria Vaquero, Markel Alberdi\n"
+				+ "Francia: Pedro Aragon\n"
+				+ "Portugal: Angel Alonso,Irati Alberdi");
+		System.out.println("------------------------------------------------------------------------------");
+		
+		for(String i:nSI.ikasleakHerrialdekaLortu().keySet()) {
+			for(int j=0;j<nSI.ikasleakHerrialdekaLortu().get(i).size();j++) {
+				System.out.println("Herrialdea: "+i+" Ikasleak: "+nSI.ikasleakHerrialdekaLortu().get(i).get(j));
+			}
+		}
+		
+		
+		System.out.println("SoftwareIngeniaritza klasearen batazbestekoNotakHerrialdekaLortu() metodoa");
+		System.out.println("Francia=6.886666666666667, Espainia=4.637777777777777, Portugal=5.336666666666667");
+		System.out.println("------------------------------------------------------------------------------");
+		System.out.println(nSI.batazbestekoNotakHerrialdekaLortu());
+		
+		System.out.println("SoftwareIngeniaritza klasearen notaMaximodunIkasleaHerrialdekaLortu() metodoa");
+		System.out.println("Francia=Pedro Aragon, Espainia=Maria Vaquero, Portugal=Angel Alonso");
+		System.out.println("------------------------------------------------------------------------------");
+		System.out.println(nSI.notaMaximodunIkasleaHerrialdekaLortu());
+		
+		System.out.println("SoftwareIngeniaritza klasearen notaMaximoaHerrialdekaLortu() metodoa");
+		System.out.println("Francia=6.886666666666667, Espainia=6.086666666666666, Portugal=6.466666666666667");
+		System.out.println("------------------------------------------------------------------------------");
+		System.out.println(nSI.notaMaximoaHerrialdekaLortu());
 		
 	}
 
