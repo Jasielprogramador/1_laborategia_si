@@ -234,11 +234,38 @@ public class Nagusia {
 		}
 		
 		
-		//TODO
 		System.out.println("SoftwareIngeniaritza klasearen gaindituenPorzentaiaLortu() metodoa");
-		System.out.println(nSI.gaindituenPortzentaiaLortu());
+		System.out.println("50.0 ------------------"+nSI.gaindituenPortzentaiaLortu());
 		
-		System.out.println("SoftwareIngeniaritza klasearen gaindituenPorzentaiaLortu() metodoa");
+		System.out.println("SoftwareIngeniaritza klasearen herrialdeakLortu() metodoa");
+		System.out.println("[Espainia, Francia, Portugal] -----------"+nSI.herrialdeakLortu());
+		
+		System.out.println("SoftwareIngeniaritza klasearen entregagarriGuztiakGainditutakoakLortu() metodoa");
+		System.out.println("Izen-abizenak: Maria Vaquero, eposta: maria@ehu.eus\n" + 
+				"Izen-abizenak: Pedro Aragon, eposta: pedro@ehu.eus");
+		System.out.println("------------------------------------------------------------------------------");
+		for(Ikasle i:nSI.entregagarriGuztiakGainditutakoakLortu()) {
+			System.out.println(i);
+		}
+		
+		System.out.println("SoftwareIngeniaritza klasearen entregagarrianNotaGainditzenDutenIkasleakLortu() metodoa");
+		System.out.println("Izen-abizenak: Maria Vaquero, eposta: maria@ehu.eus\n" + 
+				"Izen-abizenak: Angel Alonso, eposta: angel@ehu.eus");
+		System.out.println("------------------------------------------------------------------------------");
+		for(Ikasle i:nSI.entregagarrianNotaGainditzenDutenIkasleakLortu(7.0)) {
+			System.out.println(i);
+		}
+		
+		System.out.println("SoftwareIngeniaritza klasearen ikasleenEstatiskikakInprimatu() metodoa");
+		System.out.println("{\"max\":6.886666666666667,\"min\":3.74,\"average\":5.245555555555556}");
+		System.out.println("------------------------------------------------------------------------------");
+		nSI.ikasleenEstatiskikakInprimatu();
+		
+		System.out.println("SoftwareIngeniaritza klasearen gaindituakSuspendituakLortu() metodoa");
+		for(boolean i:nSI.gaindituakSuspendituakLortu().keySet()) {
+			System.out.println(i+nSI.gaindituakSuspendituakLortu().get(i));
+		}
+		
 	}
 
 }
